@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+
+kind: Ingress
+metadata:
+  name: dashboard-ingress
+  namespace: kubernetes-dashboard
+  # annotations:
+  #   nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix  # Exact / Prefix / Mixed 
+        backend:
+          service:
+            name: kubernetes-dashboard
+            port:
+              number: 80
+# spec:
+#   rules:
+#   - host: dashboard.com
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: kubernetes-dashboard
+#           servicePort: 80
